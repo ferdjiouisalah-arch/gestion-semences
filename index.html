@@ -4,401 +4,415 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تعاونية الحبوب والبقول الجافة - عين مليلة</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- مكتبات Excel و PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #8B1E3F 0%, #5A1228 100%);
-            --card-gradient-1: linear-gradient(135deg, #0984e3, #74b9ff);
-            --card-gradient-2: linear-gradient(135deg, #00b894, #55efc4);
-            --card-gradient-3: linear-gradient(135deg, #fdcb6e, #ffeaa7);
-            --card-gradient-4: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            --bg-color: #f0f2f5;
+            --primary-burgundy: #7a152b;
+            --header-gradient: linear-gradient(180deg, #7a152b 0%, #4a0918 100%);
+            --main-bg: #12181f;
+            --card-bg: rgba(30, 41, 54, 0.88);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --accent-green: #2ecc71;
+            --accent-pink: #e91e63;
         }
+
         body {
+            background-color: var(--main-bg);
+            color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
+            margin: 0;
+            padding-bottom: 90px;
         }
+
+        /* الصفحة الأولى: واجهة تسجيل الدخول الأصلية بالشعار */
         .login-card {
-            max-width: 440px;
-            margin: 40px auto;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(139, 30, 63, 0.2);
-            border: none;
-            overflow: hidden;
+            max-width: 420px;
+            margin: 30px auto;
+            border-radius: 25px;
             background: #ffffff;
+            color: #333333;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            overflow: hidden;
+            border: none;
         }
+
         .login-header {
-            background: var(--primary-gradient);
-            color: white;
+            background: var(--header-gradient);
             padding: 30px 20px;
-            border-bottom-left-radius: 50% 20px;
-            border-bottom-right-radius: 50% 20px;
+            text-align: center;
+            color: white;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
         }
-        .logo-img {
-            max-width: 150px;
-            height: auto;
+
+        /* الشعار الأصلي الدائري */
+        .coop-logo-img {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 4px solid #ffffff;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            object-fit: cover;
+            background: #fff;
         }
-        .stat-card {
-            border: none;
-            border-radius: 16px;
-            color: white;
-            padding: 20px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease;
-        }
-        .stat-card:hover {
-            transform: translateY(-3px);
-        }
-        .bg-card-1 { background: var(--card-gradient-1); }
-        .bg-card-2 { background: var(--card-gradient-2); }
-        .bg-card-3 { background: var(--card-gradient-3); color: #2d3436; }
-        .bg-card-4 { background: var(--card-gradient-4); }
 
-        .nav-tabs .nav-link {
-            border-radius: 12px 12px 0 0;
-            font-weight: bold;
-            color: #555;
-            padding: 12px 20px;
+        /* شريط العنوان العلوي */
+        .app-header {
+            background: var(--header-gradient);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
-        .nav-tabs .nav-link.active {
-            background: var(--primary-gradient);
+
+        /* بطاقات Glassmorphism */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* الرسم الدائري الإحصائي */
+        .donut-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: auto;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent-pink) 0% 78%, #2a3847 78% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-inner {
+            width: 88px;
+            height: 88px;
+            background: #18222d;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* العرض الثلاثي الأبعاد للبذور */
+        .seeds-3d-platform {
+            position: relative;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .seeds-3d-img {
+            width: 100%;
+            max-width: 380px;
+            filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.7));
+            border-radius: 20px;
+        }
+
+        /* مدخلات النصوص */
+        .form-control-dark, .form-select-dark {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white !important;
-            border: none;
-        }
-        .table-custom {
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 10px;
         }
-        .progress-custom {
-            height: 12px;
-            border-radius: 6px;
-            background-color: #e9ecef;
+        .form-select-dark option {
+            background-color: var(--main-bg);
+            color: white;
         }
-        @media print {
-            .no-print { display: none !important; }
-            #printArea { visibility: visible; }
+
+        /* شريط التنقل السفلي */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 75px;
+            background: #171f28;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-item-btn {
+            color: #8a99ad;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 11px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-item-btn.active {
+            color: #ffffff;
+        }
+
+        .nav-item-btn i {
+            font-size: 19px;
+            margin-bottom: 3px;
+        }
+
+        .badge-3d {
+            position: absolute;
+            top: -5px;
+            right: 12px;
+            background: var(--accent-pink);
+            color: white;
+            font-size: 9px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 10px;
+        }
+
+        .center-fab {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -30px;
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+            border: 3px solid var(--main-bg);
+            cursor: pointer;
+        }
+
+        .hidden-section {
+            display: none !important;
         }
     </style>
 </head>
 <body>
 
-    <!-- واجهة تسجيل الدخول الملونة والتفاعلية -->
-    <div id="loginScreen" class="container py-4">
-        <div class="card login-card text-center">
+    <!-- ================= الصفحة الأولى: تسجيل الدخول بالشعار الأصلي ================= -->
+    <div id="loginSection" class="container">
+        <div class="card login-card">
             <div class="login-header">
-                <img src="1000012302.jpg" alt="CCLS Aïn M'lila" class="logo-img mb-3" onerror="this.src='https://via.placeholder.com/150?text=CCLS+Ain+Mlila'">
-                <h4 class="fw-bold mb-1">تعاونية الحبوب والبقول الجافة</h4>
-                <small class="opacity-75">عين مليلة - CCLS Aïn M'lila</small>
-            </div>
-            <div class="card-body p-4 text-start">
+                <!-- الشعار الأصلي للتعاونية -->
                 <div class="mb-3">
-                    <label class="form-label fw-bold text-secondary"><i class="fa fa-user-shield text-danger me-1"></i> نوع الحساب (Rôle):</label>
-                    <select id="roleSelect" class="form-select form-select-lg rounded-3">
+                    <div class="d-inline-block p-1 rounded-circle bg-white shadow">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center text-danger fw-bold" style="width: 100px; height: 100px; border: 3px solid #7a152b; background: #fff;">
+                            <div class="text-center">
+                                <i class="fas fa-wheat-awn text-warning fa-2x"></i><br>
+                                <span style="font-size: 10px; color: #7a152b; font-weight: bold;">CCLS Ain M'lila</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="fw-bold mb-1">تعاونية الحبوب والبقول الجافة</h4>
+                <p class="mb-0 text-white-50 small">عين مليلة - CCLS Aïn M'lila</p>
+            </div>
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <label class="form-label fw-bold"><i class="fas fa-user-shield text-danger me-1"></i> نوع الحساب (Rôle):</label>
+                    <select id="loginRole" class="form-select border-2">
                         <option value="admin">👨‍💼 مشرف (Admin) - صلاحيات كاملة</option>
-                        <option value="viewer">👁️ متابع (Viewer) - إطلاع ومراقبة فقط</option>
+                        <option value="user">👤 مستخدم (User)</option>
                     </select>
                 </div>
-
-                <div class="mb-4">
-                    <label class="form-label fw-bold text-secondary"><i class="fa fa-key text-warning me-1"></i> كلمة السر (Mot de passe):</label>
-                    <input type="password" id="loginPassword" class="form-control form-control-lg rounded-3" placeholder="أدخل كلمة المرور">
+                <div class="mb-3">
+                    <label class="form-label fw-bold"><i class="fas fa-key text-warning me-1"></i> كلمة السر (Mot de passe):</label>
+                    <input type="password" id="passwordInput" class="form-control border-2" placeholder="أدخل كلمة المرور (1234)">
                 </div>
-
-                <button onclick="login()" class="btn btn-danger btn-lg w-100 fw-bold shadow-sm rounded-3 py-3">
-                    دخول التطبيق <i class="fa fa-arrow-left ms-2"></i>
+                <button onclick="handleLogin()" class="btn btn-danger w-100 py-2 fw-bold shadow-sm mt-2" style="background-color: #7a152b; border: none;">
+                    <i class="fas fa-sign-in-alt me-1"></i> دخول التطبيق ➔
                 </button>
-                <div id="loginError" class="text-danger text-center mt-3 fw-bold" style="display:none;">⚠️ كلمة المرور غير صحيحة!</div>
+                <div id="errorMsg" class="text-danger text-center mt-3 small fw-bold hidden-section">
+                    <i class="fas fa-exclamation-triangle"></i> كلمة المرور غير صحيحة! (كلمة المرور: 1234)
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- واجهة التطبيق الرئيسية الملونة -->
-    <div id="appScreen" style="display:none;" class="container-fluid py-3">
-        <!-- الشريط العلوي الاحترافي -->
-        <div class="d-flex justify-content-between align-items-center bg-white p-3 rounded-4 shadow-sm mb-4 no-print">
-            <div class="d-flex align-items-center">
-                <img src="1000012302.jpg" width="60" height="60" class="rounded-circle me-3 border border-2 border-danger" onerror="this.style.display='none'">
-                <div>
-                    <h4 class="m-0 fw-bold text-danger">تعاونية الحبوب والبقول الجافة - عين مليلة</h4>
-                    <small id="userRoleBadge" class="badge bg-success mt-1 fs-6"></small>
-                </div>
-            </div>
+    <!-- ================= الصفحة الثانية: التطبيق المطور 3D ================= -->
+    <div id="appSection" class="hidden-section">
+        
+        <!-- Header -->
+        <div class="app-header d-flex justify-content-between align-items-center">
             <div>
-                <button id="btnSettings" onclick="showSettingsModal()" class="btn btn-outline-secondary rounded-3 me-2" style="display:none;">
-                    <i class="fa fa-cog"></i> إعدادات الأمان
-                </button>
-                <button onclick="logout()" class="btn btn-danger rounded-3"><i class="fa fa-sign-out-alt"></i> خروج</button>
+                <h6 class="fw-bold m-0">تعاونية الحبوب والبقول الجافة - عين مليلة</h6>
+                <small class="text-white-50" style="font-size: 11px;">إدارة المخزون المتقدمة</small>
+            </div>
+            <div class="rounded-circle bg-white d-flex align-items-center justify-content-center text-danger fw-bold" style="width: 50px; height: 50px; font-size: 10px;">
+                CCLS
             </div>
         </div>
 
-        <!-- بطاقات ملونة للإحصائيات السريعة -->
-        <div class="row g-3 mb-4 no-print">
-            <div class="col-md-3 col-6">
-                <div class="stat-card bg-card-1">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h6 class="text-white-50 fw-bold">إجمالي المخزون</h6>
-                            <h3 class="m-0 fw-bold" id="statStock">0 <small class="fs-6">قنطار</small></h3>
+        <div class="container mt-3">
+
+            <!-- ملخص المخزون والحيوي -->
+            <div class="row g-2 mb-2">
+                <div class="col-6">
+                    <div class="glass-card text-center h-100">
+                        <div class="donut-container my-1">
+                            <div class="donut-inner">
+                                <small class="text-white-50" style="font-size: 9px;">إجمالي المخزون</small>
+                                <h4 class="fw-bold m-0 text-white" id="totalStockPercentage">78%</h4>
+                            </div>
                         </div>
-                        <i class="fa fa-warehouse fs-1 opacity-50"></i>
+                    </div>
+                </div>
+
+                <div class="col-6 d-flex flex-column justify-content-between">
+                    <div class="glass-card mb-2 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-white-50 small" style="font-size: 11px;">الشحنات الواردة</div>
+                            <h4 class="fw-bold m-0 text-success" id="statIn">573</h4>
+                        </div>
+                        <i class="fas fa-box-open fa-2x text-success opacity-75"></i>
+                    </div>
+                    <div class="glass-card d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-white-50 small" style="font-size: 11px;">التوزيع اليومي</div>
+                            <h4 class="fw-bold m-0 text-warning" id="statOut">678</h4>
+                        </div>
+                        <i class="fas fa-chart-line fa-2x text-warning opacity-75"></i>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card bg-card-2">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h6 class="text-white-50 fw-bold">إجمالي الدخول</h6>
-                            <h3 class="m-0 fw-bold" id="statEntry">0 <small class="fs-6">قنطار</small></h3>
-                        </div>
-                        <i class="fa fa-arrow-down fs-1 opacity-50"></i>
+
+            <!-- عرض البذور ثلاثي الأبعاد 3D -->
+            <div class="seeds-3d-platform">
+                <img src="https://i.ibb.co/6y4f3vG/seeds-3d-display.png" onerror="this.src='https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop';" class="seeds-3d-img" alt="3D Seeds Platform">
+            </div>
+
+            <!-- ⭐ خانة إدخال البذور والشحنات ⭐ -->
+            <div class="glass-card mb-3">
+                <h6 class="fw-bold text-success mb-3"><i class="fas fa-plus-circle me-1"></i> خانة إضافة شحنة بذور جديدة</h6>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <label class="text-white-50 small mb-1">نوع البذور:</label>
+                        <select id="seedType" class="form-select-dark w-100">
+                            <option value="قمح صلب">قمح صلب (Blé Dur)</option>
+                            <option value="قمح لين">قمح لين (Blé Tendre)</option>
+                            <option value="شعير">شعير (Orge)</option>
+                            <option value="عدس">عدس (Lentilles)</option>
+                            <option value="حمص">حمص (Pois Chiches)</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label class="text-white-50 small mb-1">الكمية (قنطار):</label>
+                        <input type="number" id="seedQuantity" class="form-control-dark w-100" placeholder="مثال: 150">
+                    </div>
+                    <div class="col-12 mt-2">
+                        <label class="text-white-50 small mb-1">نوع العملية:</label>
+                        <select id="opType" class="form-select-dark w-100">
+                            <option value="دخول">وارد (إدخال للمخزون)</option>
+                            <option value="خروج">صادر (توزيع للمزارعين)</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <button onclick="addNewSeedEntry()" class="btn btn-success w-100 fw-bold">
+                            <i class="fas fa-save me-1"></i> تسجيل العملية بالمخزون
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card bg-card-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h6 class="text-dark-50 fw-bold">إجمالي الخروج/المبيعات</h6>
-                            <h3 class="m-0 fw-bold text-dark" id="statExit">0 <small class="fs-6">قنطار</small></h3>
-                        </div>
-                        <i class="fa fa-truck-loading fs-1 opacity-50 text-dark"></i>
+
+            <!-- إحصائيات المخزون المتبقي -->
+            <div class="row g-2 mb-4">
+                <div class="col-6">
+                    <div class="glass-card text-center">
+                        <span class="text-white-50 small">الشحنات المعلقة</span>
+                        <h4 class="fw-bold text-danger m-0" id="statPending">17,600</h4>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="glass-card text-center">
+                        <span class="text-white-50 small">رصيد البذور (قنطار)</span>
+                        <h4 class="fw-bold text-info m-0" id="statTotalStock">24,000</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card bg-card-4">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h6 class="text-white-50 fw-bold">معدل تحقيق الهدف</h6>
-                            <h3 class="m-0 fw-bold" id="statObjectif">0%</h3>
-                        </div>
-                        <i class="fa fa-chart-line fs-1 opacity-50"></i>
-                    </div>
-                </div>
+
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <div class="bottom-nav">
+            <div class="nav-item-btn active" onclick="alert('أنت في الشاشة الرئيسية')">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </div>
+            <div class="nav-item-btn" onclick="alert('عرض البذور 3D مفعل')">
+                <span class="badge-3d">3D</span>
+                <i class="fas fa-seedling"></i>
+                <span>البذور</span>
+            </div>
+            <div class="center-fab" onclick="document.getElementById('seedQuantity').focus()">
+                <i class="fas fa-plus text-white fa-lg"></i>
+            </div>
+            <div class="nav-item-btn" onclick="alert('التقارير اليومية جاهزة')">
+                <i class="fas fa-file-alt"></i>
+                <span>التقارير</span>
+            </div>
+            <div class="nav-item-btn" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt text-danger"></i>
+                <span class="text-danger">خروج</span>
             </div>
         </div>
 
-        <!-- شريط التحكم والفلترة والبحث -->
-        <div class="card card-body rounded-4 border-0 shadow-sm mb-4 no-print">
-            <div class="row g-3 align-items-center">
-                <div class="col-md-3">
-                    <input type="text" id="searchInput" onkeyup="searchTable()" class="form-control rounded-3" placeholder="🔍 بحث سريع عن مركز أو صنف...">
-                </div>
-                <div class="col-md-3">
-                    <div class="btn-group w-100" role="group">
-                        <button onclick="filterView('all')" id="btnAll" class="btn btn-primary active">الكل</button>
-                        <button onclick="filterView('entry')" id="btnEntry" class="btn btn-outline-success">دخول فقط</button>
-                        <button onclick="filterView('exit')" id="btnExit" class="btn btn-outline-warning">خروج فقط</button>
-                    </div>
-                </div>
-                <div class="col-md-6 text-end">
-                    <button id="btnAddRecord" onclick="showAddModal()" class="btn btn-success me-1 rounded-3"><i class="fa fa-plus-circle"></i> إضافة عملية</button>
-                    <button id="btnAddNewSeed" onclick="showNewSeedModal()" class="btn btn-primary me-1 rounded-3"><i class="fa fa-seedling"></i> صنف جديد</button>
-                    <button onclick="exportToExcel()" class="btn btn-outline-success me-1 rounded-3"><i class="fa fa-file-excel"></i> Excel</button>
-                    <button onclick="exportToPDF()" class="btn btn-outline-danger me-1 rounded-3"><i class="fa fa-file-pdf"></i> PDF</button>
-                    <button onclick="printReport()" class="btn btn-outline-dark me-1 rounded-3"><i class="fa fa-print"></i> طباعة</button>
-                    <button id="btnBackup" onclick="backupData()" class="btn btn-secondary rounded-3"><i class="fa fa-save"></i> حفظ</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- الأقسام الرئيسية بالألوان -->
-        <ul class="nav nav-tabs mb-3 no-print" id="categoryTabs">
-            <li class="nav-item"><a class="nav-link active" onclick="switchCategory('grains')">🌾 الحبوب (Grains)</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="switchCategory('pulses')">🫘 البقول الجافة (Légumes Secs)</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="switchCategory('fertilizers')">🌱 الأسمدة (Engrais)</a></li>
-            <li class="nav-item"><a class="nav-link" onclick="switchCategory('pesticides')">🧪 المبيدات (Pesticides)</a></li>
-        </ul>
-
-        <!-- جدول البيانات الأنيق والملون -->
-        <div id="printArea" class="bg-white rounded-4 shadow-sm p-3 table-custom">
-            <div class="text-center mb-3 d-none d-print-block">
-                <h2>تعاونية الحبوب والبقول الجافة - عين مليلة</h2>
-                <h5 class="text-muted">تقرير متابعة المخزون والمبيعات والأهداف</h5>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-hover table-bordered align-middle text-center m-0">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>المركز (Centre)</th>
-                            <th>الصنف / النوع</th>
-                            <th class="col-entry bg-success text-white">كمية الدخول</th>
-                            <th class="col-exit bg-warning text-dark">كمية الخروج</th>
-                            <th class="bg-primary text-white">الهدف (Objectif)</th>
-                            <th style="width: 180px;">نسبة الهدف (Objectif %)</th>
-                            <th class="bg-info text-white">المخزون الحالي</th>
-                            <th id="thActions" class="no-print">إجراءات</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dataTableBody">
-                        <!-- نموذج توضيحي للبيانات الملونة -->
-                        <tr>
-                            <td class="fw-bold text-danger">مركز عين مليلة الرئيسي</td>
-                            <td class="fw-bold">قمح صلب (Blé Dur)</td>
-                            <td class="col-entry text-success fw-bold">8,000</td>
-                            <td class="col-exit text-dark fw-bold">6,000</td>
-                            <td class="text-primary fw-bold">7,500</td>
-                            <td>
-                                <span class="badge bg-warning text-dark fs-6 mb-1">80.0%</span>
-                                <div class="progress progress-custom">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%;"></div>
-                                </div>
-                            </td>
-                            <td class="fw-bold text-primary fs-6">2,000</td>
-                            <td class="no-print">
-                                <button class="btn btn-sm btn-outline-primary me-1"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 
-    <!-- نافذة إعدادات كلمات السر -->
-    <div class="modal fade" id="settingsModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-4 border-0">
-                <div class="modal-header bg-danger text-white rounded-top-4">
-                    <h5 class="modal-title fw-bold"><i class="fa fa-user-lock me-2"></i> إعدادات الأمان وتغيير كلمات السر</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">كلمة سر المشرف الجديدة (Admin):</label>
-                        <input type="text" id="newAdminPass" class="form-control rounded-3">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">كلمة سر المتابع الجديدة (Viewer):</label>
-                        <input type="text" id="newViewerPass" class="form-control rounded-3">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" onclick="saveNewPasswords()" class="btn btn-danger rounded-3 w-100 fw-bold">حفظ التغييرات</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        let adminPass = localStorage.getItem('adminPass') || 'admin123';
-        let viewerPass = localStorage.getItem('viewerPass') || 'user123';
-        let currentUserRole = '';
+        // تسجيل الدخول
+        function handleLogin() {
+            const role = document.getElementById('loginRole').value;
+            const pass = document.getElementById('passwordInput').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
 
-        function login() {
-            let role = document.getElementById('roleSelect').value;
-            let pass = document.getElementById('loginPassword').value;
-
-            if (role === 'admin' && pass === adminPass) {
-                currentUserRole = 'admin';
-                startApp();
-            } else if (role === 'viewer' && pass === viewerPass) {
-                currentUserRole = 'viewer';
-                startApp();
+            if (pass === '1234' || pass === '0000' || pass === 'admin123') {
+                document.getElementById('loginSection').classList.add('hidden-section');
+                document.getElementById('appSection').classList.remove('hidden-section');
+                errorMsg.classList.add('hidden-section');
             } else {
-                document.getElementById('loginError').style.display = 'block';
+                errorMsg.classList.remove('hidden-section');
             }
         }
 
-        function startApp() {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('appScreen').style.display = 'block';
+        // تسجيل الخروج
+        function handleLogout() {
+            document.getElementById('appSection').classList.add('hidden-section');
+            document.getElementById('loginSection').classList.remove('hidden-section');
+            document.getElementById('passwordInput').value = '';
+        }
+
+        // إضافة شحنة بذور وتحديث الإحصائيات
+        function addNewSeedEntry() {
+            const seed = document.getElementById('seedType').value;
+            const qty = parseInt(document.getElementById('seedQuantity').value);
+            const op = document.getElementById('opType').value;
+
+            if (!qty || qty <= 0) {
+                alert("يرجى إدخال كمية صحيحة بالقنطار!");
+                return;
+            }
+
+            let currentTotal = parseInt(document.getElementById('statTotalStock').innerText.replace(',', ''));
             
-            let badge = document.getElementById('userRoleBadge');
-            if (currentUserRole === 'admin') {
-                badge.innerText = '👨‍💼 مشرف (Admin) - صلاحيات كاملة';
-                badge.className = 'badge bg-danger mt-1 fs-6';
-                document.getElementById('btnSettings').style.display = 'inline-block';
+            if (op === 'دخول') {
+                currentTotal += qty;
+                let currentIn = parseInt(document.getElementById('statIn').innerText);
+                document.getElementById('statIn').innerText = currentIn + 1;
             } else {
-                badge.innerText = '👁️ متابع (Viewer) - عرض فقط';
-                badge.className = 'badge bg-warning text-dark mt-1 fs-6';
-                document.getElementById('btnAddRecord').style.display = 'none';
-                document.getElementById('btnAddNewSeed').style.display = 'none';
-                document.getElementById('btnBackup').style.display = 'none';
-                document.getElementById('thActions').style.display = 'none';
+                currentTotal -= qty;
+                let currentOut = parseInt(document.getElementById('statOut').innerText);
+                document.getElementById('statOut').innerText = currentOut + 1;
             }
-        }
 
-        function logout() {
-            location.reload();
-        }
-
-        function printReport() {
-            window.print();
-        }
-
-        function exportToPDF() {
-            const element = document.getElementById('printArea');
-            const options = {
-                margin:       10,
-                filename:     'CCLS_Ain_Mlila_Report.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
-            };
-            html2pdf().from(element).set(options).save();
-        }
-
-        function filterView(mode) {
-            let entries = document.querySelectorAll('.col-entry');
-            let exits = document.querySelectorAll('.col-exit');
-
-            if (mode === 'entry') {
-                entries.forEach(e => e.style.display = '');
-                exits.forEach(e => e.style.display = 'none');
-            } else if (mode === 'exit') {
-                entries.forEach(e => e.style.display = 'none');
-                exits.forEach(e => e.style.display = '');
-            } else {
-                entries.forEach(e => e.style.display = '');
-                exits.forEach(e => e.style.display = '');
-            }
-        }
-
-        function searchTable() {
-            let input = document.getElementById("searchInput").value.toUpperCase();
-            let table = document.getElementById("dataTableBody");
-            let tr = table.getElementsByTagName("tr");
-
-            for (let i = 0; i < tr.length; i++) {
-                let td1 = tr[i].getElementsByTagName("td")[0];
-                let td2 = tr[i].getElementsByTagName("td")[1];
-                if (td1 || td2) {
-                    let txtValue1 = td1.textContent || td1.innerText;
-                    let txtValue2 = td2.textContent || td2.innerText;
-                    if (txtValue1.toUpperCase().indexOf(input) > -1 || txtValue2.toUpperCase().indexOf(input) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-
-        function showSettingsModal() {
-            document.getElementById('newAdminPass').value = adminPass;
-            document.getElementById('newViewerPass').value = viewerPass;
-            new bootstrap.Modal(document.getElementById('settingsModal')).show();
-        }
-
-        function saveNewPasswords() {
-            adminPass = document.getElementById('newAdminPass').value;
-            viewerPass = document.getElementById('newViewerPass').value;
-            localStorage.setItem('adminPass', adminPass);
-            localStorage.setItem('viewerPass', viewerPass);
-            alert('تم حفظ كلمات السر الجديدة بنجاح!');
-            bootstrap.Modal.getInstance(document.getElementById('settingsModal')).hide();
+            document.getElementById('statTotalStock').innerText = currentTotal.toLocaleString();
+            alert(`تم تسجيل عملية (${op}) لكمية ${qty} قنطار من (${seed}) بنجاح!`);
+            document.getElementById('seedQuantity').value = '';
         }
     </script>
 </body>
